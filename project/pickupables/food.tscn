@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://brphqqogvohhx"]
+
+[ext_resource type="Texture2D" uid="uid://c5aevdj3gppdj" path="res://pickupables/food/carrot.png" id="1_t6vcx"]
+
+[sub_resource type="GDScript" id="GDScript_h74en"]
+script/source = "class_name Food
+extends CharacterBody2D
+
+
+# Getters
+
+func get_sprite() -> CompressedTexture2D:
+	return $Sprite.texture
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r80v0"]
+size = Vector2(76, 72)
+
+[node name="Food" type="CharacterBody2D"]
+script = SubResource("GDScript_h74en")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_t6vcx")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r80v0")

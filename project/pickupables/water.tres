@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Pickupable" load_steps=3 format=3 uid="uid://71n6y7mk8ogr"]
+
+[ext_resource type="Script" path="res://pickupables/pickupable.gd" id="1_lpop3"]
+[ext_resource type="Texture2D" uid="uid://cp1rehv2pthdv" path="res://pickupables/water.png" id="1_pfd6v"]
+
+[resource]
+script = ExtResource("1_lpop3")
+type = 1
+sprite = ExtResource("1_pfd6v")
+picked_up_sprite = ExtResource("1_pfd6v")

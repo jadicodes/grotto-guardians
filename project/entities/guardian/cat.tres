@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GuardianType" load_steps=3 format=3 uid="uid://b5njjsfyay1h3"]
+
+[ext_resource type="Script" path="res://entities/guardian/guardian_type.gd" id="1_ip12e"]
+[ext_resource type="Texture2D" uid="uid://di3afoqs2c8rq" path="res://entities/guardian/cat.png" id="2_aexrx"]
+
+[resource]
+script = ExtResource("1_ip12e")
+name = "Squirrel"
+sprite = ExtResource("2_aexrx")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbprb3qks0upu"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_t6iv6"]
+[ext_resource type="Texture2D" uid="uid://l4nmmw4kxbn5" path="res://entities/player/player.png" id="2_85dbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mty0m"]
+size = Vector2(131, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24fwb"]
+size = Vector2(146, 149)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_t6iv6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_85dbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 45)
+shape = SubResource("RectangleShape2D_mty0m")
+
+[node name="PickUpMarker" type="Marker2D" parent="."]
+position = Vector2(0, -92)
+
+[node name="PickUpDetector" type="Area2D" parent="."]
+
+[node name="PickUpArea" type="CollisionShape2D" parent="PickUpDetector"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_24fwb")
+
+[node name="PickedUpSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -79)
+
+[connection signal="body_entered" from="PickUpDetector" to="." method="_on_pick_up_detector_body_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh8scvcyxjufa"]
+
+[ext_resource type="Script" path="res://entities/guardian/guardian.gd" id="1_wjpfd"]
+[ext_resource type="Resource" uid="uid://b5njjsfyay1h3" path="res://entities/guardian/cat.tres" id="2_d0a5b"]
+[ext_resource type="Texture2D" uid="uid://di3afoqs2c8rq" path="res://entities/guardian/cat.png" id="3_x514f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_282ys"]
+size = Vector2(315, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnbnn"]
+size = Vector2(315, 121)
+
+[node name="Guardian" type="CharacterBody2D"]
+script = ExtResource("1_wjpfd")
+_guardian_type = ExtResource("2_d0a5b")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("3_x514f")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_282ys")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="DetectorArea" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(2.5, 149)
+shape = SubResource("RectangleShape2D_fnbnn")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

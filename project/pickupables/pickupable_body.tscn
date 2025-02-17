@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://2maq4bgqafsa"]
+
+[ext_resource type="Texture2D" uid="uid://c5aevdj3gppdj" path="res://pickupables/food/carrot.png" id="1_eesms"]
+[ext_resource type="Script" path="res://pickupables/pickupable_body.gd" id="1_l8i5s"]
+[ext_resource type="Resource" uid="uid://b08fo53jnbqnd" path="res://pickupables/food/carrot.tres" id="2_dn5uy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqw8t"]
+size = Vector2(35, 52)
+
+[node name="PickupableBody" type="CharacterBody2D"]
+script = ExtResource("1_l8i5s")
+type = ExtResource("2_dn5uy")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -1)
+shape = SubResource("RectangleShape2D_vqw8t")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_eesms")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Pickupable" load_steps=4 format=3 uid="uid://b08fo53jnbqnd"]
+
+[ext_resource type="Texture2D" uid="uid://c5aevdj3gppdj" path="res://pickupables/food/carrot.png" id="1_444jd"]
+[ext_resource type="Texture2D" uid="uid://gobh6e5ln0n" path="res://pickupables/food/carrot_picked.png" id="1_nnxxh"]
+[ext_resource type="Script" path="res://pickupables/pickupable.gd" id="2_fdbam"]
+
+[resource]
+script = ExtResource("2_fdbam")
+type = 0
+sprite = ExtResource("1_444jd")
+picked_up_sprite = ExtResource("1_nnxxh")

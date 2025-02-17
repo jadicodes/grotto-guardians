@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://buefoki3qaum8"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_3wc5j"]
+[ext_resource type="PackedScene" uid="uid://cbprb3qks0upu" path="res://entities/player/player.tscn" id="1_rhowm"]
+[ext_resource type="PackedScene" uid="uid://dh8scvcyxjufa" path="res://entities/guardian/guardian.tscn" id="2_xs1qi"]
+[ext_resource type="Texture2D" uid="uid://barjn6e2vguke" path="res://world/dirt.png" id="4_b4yjg"]
+[ext_resource type="PackedScene" uid="uid://2maq4bgqafsa" path="res://pickupables/pickupable_body.tscn" id="7_bd8od"]
+[ext_resource type="PackedScene" uid="uid://b7wq3fq2iumnr" path="res://hud/hud.tscn" id="7_htdkn"]
+[ext_resource type="Resource" uid="uid://71n6y7mk8ogr" path="res://pickupables/water.tres" id="8_la7rc"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_3wc5j")
+
+[node name="Guardian" parent="." instance=ExtResource("2_xs1qi")]
+position = Vector2(974, 174)
+
+[node name="Dirt" type="Sprite2D" parent="."]
+position = Vector2(392, 668)
+texture = ExtResource("4_b4yjg")
+
+[node name="Dirt2" type="Sprite2D" parent="."]
+position = Vector2(1521, 632)
+rotation = -0.118636
+scale = Vector2(2.03831, 0.582857)
+texture = ExtResource("4_b4yjg")
+
+[node name="Player" parent="." instance=ExtResource("1_rhowm")]
+position = Vector2(296, 240)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("7_htdkn")]
+
+[node name="PickupableBody" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(235, 588)
+
+[node name="PickupableBody2" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(373, 586)
+
+[node name="PickupableBody3" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(522, 588)
+
+[node name="PickupableBody4" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(236, 718)
+
+[node name="PickupableBody5" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(373, 717)
+
+[node name="PickupableBody6" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(519, 712)
+
+[node name="PickupableBody7" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(1150, 667)
+type = ExtResource("8_la7rc")
+
+[node name="PickupableBody8" parent="." instance=ExtResource("7_bd8od")]
+position = Vector2(1256, 653)
+type = ExtResource("8_la7rc")
+
+[connection signal="ate_food" from="Guardian" to="CanvasLayer/HUD" method="_on_guardian_ate_food"]
+[connection signal="drank" from="Guardian" to="CanvasLayer/HUD" method="_on_guardian_drank"]
+[connection signal="picked_up" from="Player" to="." method="_on_player_picked_up"]
