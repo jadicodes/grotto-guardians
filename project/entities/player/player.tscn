@@ -32,3 +32,4 @@ shape = SubResource("RectangleShape2D_24fwb")
 position = Vector2(0, -79)
 
 [connection signal="body_entered" from="PickUpDetector" to="." method="_on_pick_up_detector_body_entered"]
+[connection signal="body_exited" from="PickUpDetector" to="." method="_on_pick_up_detector_body_exited"]
