@@ -5,11 +5,12 @@ signal picked_up
 
 const SPEED = 300.0
 
+var has_food: bool = false
+var has_drink: bool = false
+
 var _can_pick_up: bool = true 
 var _pickupables_in_detector: Array[PickupableBody] = []
 
-var has_food: bool = false
-var has_drink: bool = false
 
 # Getters
 
@@ -45,13 +46,14 @@ func _physics_process(_delta):
 func _pick_up():
 	emit_signal("picked_up")
 	if _can_pick_up:
-		$PickedUpSprite.texture = _pickupables_in_detector[0].type.picked_up_sprite
-		if _pickupables_in_detector[0].type.type == 0: # Food
-			has_food = true
-			_can_pick_up = false
-		if _pickupables_in_detector[0].type.type == 1: # Drink
-			has_drink = true
-			_can_pick_up = false
+		if _pickupables_in_detector.size() != 0:
+			$PickedUpSprite.texture = _pickupables_in_detector[0].type.picked_up_sprite
+			if _pickupables_in_detector[0].type.type == 0: # Food
+				has_food = true
+				_can_pick_up = false
+			if _pickupables_in_detector[0].type.type == 1: # Drink
+				has_drink = true
+				_can_pick_up = false
 
 
 func _on_pick_up_detector_body_entered(body: Node2D) -> void:

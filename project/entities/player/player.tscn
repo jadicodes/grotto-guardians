@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://l4nmmw4kxbn5" path="res://entities/player/player.png" id="2_85dbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mty0m"]
-size = Vector2(131, 42)
+size = Vector2(82, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24fwb"]
-size = Vector2(146, 149)
+size = Vector2(99, 67.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_t6iv6")
@@ -15,8 +15,8 @@ script = ExtResource("1_t6iv6")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_85dbg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 45)
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 47)
 shape = SubResource("RectangleShape2D_mty0m")
 
 [node name="PickUpMarker" type="Marker2D" parent="."]
@@ -25,7 +25,7 @@ position = Vector2(0, -92)
 [node name="PickUpDetector" type="Area2D" parent="."]
 
 [node name="PickUpArea" type="CollisionShape2D" parent="PickUpDetector"]
-position = Vector2(0, 0.5)
+position = Vector2(0, 41.75)
 shape = SubResource("RectangleShape2D_24fwb")
 
 [node name="PickedUpSprite" type="Sprite2D" parent="."]
