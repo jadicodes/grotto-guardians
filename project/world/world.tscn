@@ -47,21 +47,23 @@ type = ExtResource("8_la7rc")
 position = Vector2(1827, 435)
 type = ExtResource("8_la7rc")
 
-[node name="Berry" parent="." instance=ExtResource("12_51sri")]
+[node name="Creatures" type="CanvasLayer" parent="."]
+
+[node name="Berry" parent="Creatures" instance=ExtResource("12_51sri")]
 position = Vector2(907, 736)
-_type = ExtResource("13_wybsb")
+type = ExtResource("13_wybsb")
 
-[node name="Rocky" parent="." instance=ExtResource("12_51sri")]
+[node name="Rocky" parent="Creatures" instance=ExtResource("12_51sri")]
 position = Vector2(1515, 948)
-_type = ExtResource("7_k3elf")
+type = ExtResource("7_k3elf")
 
-[node name="Chord" parent="." instance=ExtResource("12_51sri")]
+[node name="Chord" parent="Creatures" instance=ExtResource("12_51sri")]
 position = Vector2(729, 1047)
-_type = ExtResource("8_tuyhr")
+type = ExtResource("8_tuyhr")
 
-[node name="Buzz" parent="." instance=ExtResource("12_51sri")]
+[node name="Buzz" parent="Creatures" instance=ExtResource("12_51sri")]
 position = Vector2(454, 32)
-_type = ExtResource("9_7w6ro")
+type = ExtResource("9_7w6ro")
 
 [node name="Grass2" type="Sprite2D" parent="."]
 position = Vector2(1610, 854)

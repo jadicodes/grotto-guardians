@@ -6,5 +6,6 @@
 
 [resource]
 script = ExtResource("1_632ki")
+creature_name = "Berry"
 sprite = ExtResource("3_pbcik")
 music = ExtResource("1_7dp0b")
