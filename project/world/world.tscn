@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buefoki3qaum8"]
+[gd_scene load_steps=17 format=3 uid="uid://buefoki3qaum8"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_3wc5j"]
 [ext_resource type="PackedScene" uid="uid://cbprb3qks0upu" path="res://entities/player/player.tscn" id="1_rhowm"]
@@ -7,18 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://barjn6e2vguke" path="res://world/dirt.png" id="4_b4yjg"]
 [ext_resource type="PackedScene" uid="uid://2maq4bgqafsa" path="res://pickupables/pickupable_body.tscn" id="7_bd8od"]
 [ext_resource type="PackedScene" uid="uid://b7wq3fq2iumnr" path="res://hud/hud.tscn" id="7_htdkn"]
+[ext_resource type="Resource" uid="uid://6g23e7jxtt7b" path="res://entities/creatures/rocky.tres" id="7_k3elf"]
 [ext_resource type="Resource" uid="uid://71n6y7mk8ogr" path="res://pickupables/water.tres" id="8_la7rc"]
 [ext_resource type="Texture2D" uid="uid://c77ol0ig3d828" path="res://world/grass.png" id="8_my3cn"]
+[ext_resource type="Resource" uid="uid://nb28i4su7rad" path="res://entities/creatures/chord.tres" id="8_tuyhr"]
+[ext_resource type="Resource" uid="uid://8xk7wh6c72uf" path="res://entities/creatures/buzzy.tres" id="9_7w6ro"]
+[ext_resource type="Texture2D" uid="uid://b8xbcu44wdwf1" path="res://world/tree.png" id="10_egceg"]
+[ext_resource type="Texture2D" uid="uid://3xi4of5730xv" path="res://world/bush.png" id="11_50awj"]
+[ext_resource type="PackedScene" uid="uid://sbhjmwv86ymb" path="res://entities/creatures/creature_body.tscn" id="12_51sri"]
+[ext_resource type="Resource" uid="uid://b0uubhb5ut7jm" path="res://entities/creatures/berry.tres" id="13_wybsb"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_3wc5j")
-
-[node name="Rock" type="Sprite2D" parent="."]
-position = Vector2(960, 179)
-texture = ExtResource("2_bqags")
-
-[node name="Guardian" parent="." instance=ExtResource("2_xs1qi")]
-position = Vector2(974, 174)
 
 [node name="Dirt" type="Sprite2D" parent="."]
 position = Vector2(392, 668)
@@ -29,10 +29,6 @@ position = Vector2(1829.85, 522.733)
 rotation = -0.118636
 scale = Vector2(1.61772, 1.4705)
 texture = ExtResource("4_b4yjg")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("7_htdkn")]
 
 [node name="PickupableBody" parent="." instance=ExtResource("7_bd8od")]
 position = Vector2(328, 635)
@@ -51,21 +47,97 @@ type = ExtResource("8_la7rc")
 position = Vector2(1827, 435)
 type = ExtResource("8_la7rc")
 
-[node name="Grass" type="Sprite2D" parent="."]
-position = Vector2(782, 423)
-texture = ExtResource("8_my3cn")
+[node name="Berry" parent="." instance=ExtResource("12_51sri")]
+position = Vector2(907, 736)
+_type = ExtResource("13_wybsb")
+
+[node name="Rocky" parent="." instance=ExtResource("12_51sri")]
+position = Vector2(1515, 948)
+_type = ExtResource("7_k3elf")
+
+[node name="Chord" parent="." instance=ExtResource("12_51sri")]
+position = Vector2(729, 1047)
+_type = ExtResource("8_tuyhr")
+
+[node name="Buzz" parent="." instance=ExtResource("12_51sri")]
+position = Vector2(454, 32)
+_type = ExtResource("9_7w6ro")
 
 [node name="Grass2" type="Sprite2D" parent="."]
 position = Vector2(1610, 854)
 texture = ExtResource("8_my3cn")
 
-[node name="Grass3" type="Sprite2D" parent="."]
+[node name="Foliage" type="CanvasLayer" parent="."]
+
+[node name="Bush6" type="Sprite2D" parent="Foliage"]
+position = Vector2(1175, 46)
+texture = ExtResource("11_50awj")
+
+[node name="Tree" type="Sprite2D" parent="Foliage"]
+position = Vector2(48, 202)
+texture = ExtResource("10_egceg")
+
+[node name="Tree2" type="Sprite2D" parent="Foliage"]
+position = Vector2(106, 456)
+texture = ExtResource("10_egceg")
+
+[node name="Bush3" type="Sprite2D" parent="Foliage"]
+position = Vector2(21, 758)
+texture = ExtResource("11_50awj")
+
+[node name="Tree3" type="Sprite2D" parent="Foliage"]
+position = Vector2(70, 742)
+rotation = -3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("10_egceg")
+
+[node name="Tree4" type="Sprite2D" parent="Foliage"]
+position = Vector2(1855, 1066)
+texture = ExtResource("10_egceg")
+
+[node name="Bush" type="Sprite2D" parent="Foliage"]
+position = Vector2(1443, 1029)
+texture = ExtResource("11_50awj")
+
+[node name="Bush2" type="Sprite2D" parent="Foliage"]
+position = Vector2(174, 983)
+texture = ExtResource("11_50awj")
+
+[node name="Bush4" type="Sprite2D" parent="Foliage"]
+position = Vector2(1710, 22)
+texture = ExtResource("11_50awj")
+
+[node name="Bush5" type="Sprite2D" parent="Foliage"]
+position = Vector2(1863, 172)
+texture = ExtResource("11_50awj")
+
+[node name="Guardian" type="CanvasLayer" parent="."]
+
+[node name="Rock" type="Sprite2D" parent="Guardian"]
+position = Vector2(960, 179)
+texture = ExtResource("2_bqags")
+
+[node name="Guardian" parent="Guardian" instance=ExtResource("2_xs1qi")]
+position = Vector2(993, 191)
+
+[node name="Grass" type="Sprite2D" parent="Guardian"]
 position = Vector2(843, 438)
 texture = ExtResource("8_my3cn")
 
-[node name="Player" parent="." instance=ExtResource("1_rhowm")]
+[node name="Grass2" type="Sprite2D" parent="Guardian"]
+position = Vector2(782, 423)
+texture = ExtResource("8_my3cn")
+
+[node name="Player" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("1_rhowm")]
 position = Vector2(296, 240)
 
-[connection signal="ate_food" from="Guardian" to="CanvasLayer/HUD" method="_on_guardian_ate_food"]
-[connection signal="drank" from="Guardian" to="CanvasLayer/HUD" method="_on_guardian_drank"]
-[connection signal="picked_up" from="Player" to="." method="_on_player_picked_up"]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUD" instance=ExtResource("7_htdkn")]
+
+[connection signal="ate_food" from="Guardian/Guardian" to="HUD/HUD" method="_on_guardian_ate_food"]
+[connection signal="drank" from="Guardian/Guardian" to="HUD/HUD" method="_on_guardian_drank"]
+[connection signal="leveled_up" from="Guardian/Guardian" to="." method="_on_guardian_leveled_up"]
+[connection signal="picked_up" from="Player/Player" to="." method="_on_player_picked_up"]

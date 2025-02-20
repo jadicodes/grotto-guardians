@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Creature" load_steps=4 format=3 uid="uid://8xk7wh6c72uf"]
+
+[ext_resource type="AudioStream" uid="uid://cfwic65knwaka" path="res://entities/creatures/buzz.wav" id="1_mtm1s"]
+[ext_resource type="Script" path="res://entities/creatures/creature.gd" id="1_qutru"]
+[ext_resource type="Texture2D" uid="uid://cceyx3hu15bjg" path="res://entities/creatures/buzz.png" id="3_1m55l"]
+
+[resource]
+script = ExtResource("1_qutru")
+sprite = ExtResource("3_1m55l")
+music = ExtResource("1_mtm1s")

@@ -15,6 +15,11 @@ run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+shapes/navigation/geometry_face_color=Color(0.501961, 1, 1, 0.235294)
+shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.211765)
+
 [display]
 
 window/size/viewport_width=1920

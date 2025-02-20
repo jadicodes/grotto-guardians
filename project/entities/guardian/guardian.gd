@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal ate_food
 signal drank
+signal leveled_up
 
 @export var _guardian_type: GuardianType
 var guardian_name: String
@@ -22,3 +23,8 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		if _has_drink:
 			body.clear_inventory()
 			emit_signal("drank")
+
+
+func _on_happiness_timer_timeout() -> void:
+	emit_signal("leveled_up")
+	$HappinessTimer.start()

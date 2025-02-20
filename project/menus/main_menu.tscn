@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvuueun01q1s2"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_ah10b"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ah10b")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 339.0
+offset_right = 1419.0
+offset_bottom = 514.0
+theme_override_font_sizes/font_size = 128
+text = "Grotto Guardian"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 814.0
+offset_top = 627.0
+offset_right = 995.0
+offset_bottom = 723.0
+theme_override_font_sizes/font_size = 64
+text = "Begin"
+
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 730.0
+offset_right = 1019.0
+offset_bottom = 826.0
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
