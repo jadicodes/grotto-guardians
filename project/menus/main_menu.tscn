@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvuueun01q1s2"]
+[gd_scene load_steps=6 format=3 uid="uid://dvuueun01q1s2"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_ah10b"]
+[ext_resource type="Texture2D" uid="uid://b8xbcu44wdwf1" path="res://world/tree.png" id="2_38uug"]
+[ext_resource type="Texture2D" uid="uid://3xi4of5730xv" path="res://world/bush.png" id="3_anf4q"]
+[ext_resource type="Texture2D" uid="uid://bcylipk51yfei" path="res://world/rock.png" id="4_pt8nf"]
+[ext_resource type="Texture2D" uid="uid://c77ol0ig3d828" path="res://world/grass.png" id="5_s6uiq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,6 +21,11 @@ offset_left = 406.0
 offset_top = 339.0
 offset_right = 1419.0
 offset_bottom = 514.0
+theme_override_colors/font_color = Color(0.870588, 0.831373, 0.784314, 1)
+theme_override_colors/font_shadow_color = Color(0.356863, 0.211765, 0.211765, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 128
 text = "Grotto Guardian"
 
@@ -26,6 +35,9 @@ offset_left = 814.0
 offset_top = 627.0
 offset_right = 995.0
 offset_bottom = 723.0
+theme_override_colors/font_color = Color(0.870588, 0.831373, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0.356863, 0.211765, 0.211765, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 64
 text = "Begin"
 
@@ -35,8 +47,47 @@ offset_left = 792.0
 offset_top = 730.0
 offset_right = 1019.0
 offset_bottom = 826.0
+theme_override_colors/font_color = Color(0.870588, 0.831373, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0.356863, 0.211765, 0.211765, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 64
 text = "Credits"
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(73, 826)
+texture = ExtResource("2_38uug")
+
+[node name="Bush" type="Sprite2D" parent="."]
+position = Vector2(1476, 848)
+texture = ExtResource("3_anf4q")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(1682, 936)
+texture = ExtResource("3_anf4q")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(1838, 288)
+texture = ExtResource("2_38uug")
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(2063, 570)
+texture = ExtResource("4_pt8nf")
+
+[node name="Rock2" type="Sprite2D" parent="."]
+position = Vector2(57, -73)
+texture = ExtResource("4_pt8nf")
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(379, 669)
+texture = ExtResource("5_s6uiq")
+
+[node name="Grass2" type="Sprite2D" parent="."]
+position = Vector2(1029, 224)
+texture = ExtResource("5_s6uiq")
+
+[node name="Grass3" type="Sprite2D" parent="."]
+position = Vector2(1880, 828)
+texture = ExtResource("5_s6uiq")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
