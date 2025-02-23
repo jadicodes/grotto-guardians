@@ -6,6 +6,13 @@ signal leveled_up
 
 @export var _guardian_type: GuardianType
 var guardian_name: String
+var current_state: int = 1
+
+enum state {
+	SAD,
+	NEUTRAL,
+	HAPPY
+}
 
 
 func _ready():
@@ -26,9 +33,15 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 
 
 func _on_happiness_timer_timeout() -> void:
-	emit_signal("leveled_up")
+	# If cat is happy when timer runs out, emit level up signal, restart the timer 
+	if current_state == 2:
+		emit_signal("leveled_up")
+	if current_state < 2:
+		current_state += 1
 	$HappinessTimer.start()
 
 
 func _on_hud_leveled_down() -> void:
-	$HappinessTimer.start()
+	if current_state > 0:
+		current_state -= 1
+		$HappinessTimer.start()
