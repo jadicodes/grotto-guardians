@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://buefoki3qaum8"]
+[gd_scene load_steps=16 format=3 uid="uid://buefoki3qaum8"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_3wc5j"]
 [ext_resource type="PackedScene" uid="uid://cbprb3qks0upu" path="res://entities/player/player.tscn" id="1_rhowm"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b8xbcu44wdwf1" path="res://world/tree.png" id="10_egceg"]
 [ext_resource type="Texture2D" uid="uid://3xi4of5730xv" path="res://world/bush.png" id="11_50awj"]
 [ext_resource type="PackedScene" uid="uid://sbhjmwv86ymb" path="res://entities/creatures/creature_body.tscn" id="12_51sri"]
-[ext_resource type="Resource" uid="uid://b0uubhb5ut7jm" path="res://entities/creatures/berry.tres" id="13_wybsb"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_3wc5j")
@@ -48,10 +47,6 @@ position = Vector2(1827, 435)
 type = ExtResource("8_la7rc")
 
 [node name="Creatures" type="CanvasLayer" parent="."]
-
-[node name="Berry" parent="Creatures" instance=ExtResource("12_51sri")]
-position = Vector2(907, 736)
-type = ExtResource("13_wybsb")
 
 [node name="Rocky" parent="Creatures" instance=ExtResource("12_51sri")]
 position = Vector2(1515, 948)
@@ -143,3 +138,5 @@ position = Vector2(296, 240)
 [connection signal="drank" from="Guardian/Guardian" to="HUD/HUD" method="_on_guardian_drank"]
 [connection signal="leveled_up" from="Guardian/Guardian" to="." method="_on_guardian_leveled_up"]
 [connection signal="picked_up" from="Player/Player" to="." method="_on_player_picked_up"]
+[connection signal="leveled_down" from="HUD/HUD" to="." method="_on_hud_leveled_down"]
+[connection signal="leveled_down" from="HUD/HUD" to="Guardian/Guardian" method="_on_hud_leveled_down"]

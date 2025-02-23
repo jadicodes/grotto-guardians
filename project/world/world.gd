@@ -9,7 +9,6 @@ enum state {
 	NONE,
 	ROCKY,
 	BUZZ,
-	BERRY,
 	CHORDS,
 }
 
@@ -36,20 +35,29 @@ func _change_state(new_state):
 				if creature.type.creature_name == "Rocky":
 					creature.show_creature(_music_time)
 					_music_playing = true
+				if creature.type.creature_name == "Buzzy":
+					creature.hide_creature()
+				if creature.type.creature_name == "Chord":
+					creature.hide_creature()
 		state.BUZZ:
 			for creature in $Creatures.get_children():
 				if creature.type.creature_name == "Buzzy":
 					creature.show_creature(_music_time)
-		state.BERRY:
-			for creature in $Creatures.get_children():
-				if creature.type.creature_name == "Berry":
-					creature.show_creature(_music_time)
+				if creature.type.creature_name == "Chord":
+					creature.hide_creature()
 		state.CHORDS:
 			for creature in $Creatures.get_children():
 				if creature.type.creature_name == "Chord":
 					creature.show_creature(_music_time)
+	print(current_state)
 
 
 func _on_guardian_leveled_up() -> void:
-	level += 1
+	if level < 3:
+		level += 1
+		_change_state(level)
+
+
+func _on_hud_leveled_down() -> void:
+	level -= 1
 	_change_state(level)

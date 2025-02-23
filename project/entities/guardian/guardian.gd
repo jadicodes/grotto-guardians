@@ -28,3 +28,7 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 func _on_happiness_timer_timeout() -> void:
 	emit_signal("leveled_up")
 	$HappinessTimer.start()
+
+
+func _on_hud_leveled_down() -> void:
+	$HappinessTimer.start()
