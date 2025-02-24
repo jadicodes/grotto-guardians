@@ -33,6 +33,7 @@ func _change_state(new_state):
 				creature.hide_creature()
 				_music_playing = false
 		state.ROCKY:
+			$AnimationPlayer.play("rocky_enters")
 			for creature in $Creatures.get_children():
 				if creature.type.creature_name == "Rocky":
 					creature.show_creature(_music_time)
@@ -42,6 +43,7 @@ func _change_state(new_state):
 				if creature.type.creature_name == "Chord":
 					creature.hide_creature()
 		state.BUZZ:
+			$AnimationPlayer.play("buzz_enters")
 			for creature in $Creatures.get_children():
 				if creature.type.creature_name == "Buzzy":
 					creature.show_creature(_music_time)
@@ -50,10 +52,10 @@ func _change_state(new_state):
 				if is_chord_out:
 					$AnimationPlayer.play("chord_leaves")
 		state.CHORDS:
+			$AnimationPlayer.play("chord_enters")
 			for creature in $Creatures.get_children():
 				if creature.type.creature_name == "Chord":
 					creature.show_creature(_music_time)
-					$AnimationPlayer.play("chord_enters")
 					is_chord_out = true
 
 

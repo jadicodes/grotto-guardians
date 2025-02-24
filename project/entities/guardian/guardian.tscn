@@ -29,7 +29,7 @@ position = Vector2(2.5, 149)
 shape = SubResource("RectangleShape2D_fnbnn")
 
 [node name="HappinessTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
