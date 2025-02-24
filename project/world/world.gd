@@ -5,6 +5,8 @@ var current_state: int = 0
 var _music_playing: bool = false
 var _music_time: float = 0.0
 
+var is_chord_out: bool = false
+
 enum state {
 	NONE,
 	ROCKY,
@@ -45,11 +47,14 @@ func _change_state(new_state):
 					creature.show_creature(_music_time)
 				if creature.type.creature_name == "Chord":
 					creature.hide_creature()
+				if is_chord_out:
+					$AnimationPlayer.play("chord_leaves")
 		state.CHORDS:
 			for creature in $Creatures.get_children():
 				if creature.type.creature_name == "Chord":
 					creature.show_creature(_music_time)
-	print(current_state)
+					$AnimationPlayer.play("chord_enters")
+					is_chord_out = true
 
 
 func _on_guardian_leveled_up() -> void:

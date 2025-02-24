@@ -10,12 +10,10 @@ func _ready() -> void:
 
 
 func show_creature(from_position: float = 0.0):
-	show()
 	$MusicPlayer.play(from_position)
 
 
 func hide_creature():
-	hide()
 	$MusicPlayer.stop()
 
 

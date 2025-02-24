@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://buefoki3qaum8"]
+[gd_scene load_steps=21 format=3 uid="uid://buefoki3qaum8"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_3wc5j"]
 [ext_resource type="PackedScene" uid="uid://cbprb3qks0upu" path="res://entities/player/player.tscn" id="1_rhowm"]
@@ -15,12 +15,67 @@
 [ext_resource type="Texture2D" uid="uid://b8xbcu44wdwf1" path="res://world/tree.png" id="10_egceg"]
 [ext_resource type="Texture2D" uid="uid://3xi4of5730xv" path="res://world/bush.png" id="11_50awj"]
 [ext_resource type="PackedScene" uid="uid://sbhjmwv86ymb" path="res://entities/creatures/creature_body.tscn" id="12_51sri"]
+[ext_resource type="Texture2D" uid="uid://bo3nd4lc3bicw" path="res://world/log.png" id="16_mch6q"]
+
+[sub_resource type="Animation" id="Animation_uvgni"]
+resource_name = "chord_enters"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creatures/Chord:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-227, 743), Vector2(-102, 690), Vector2(-9, 794), Vector2(35, 766), Vector2(82, 806), Vector2(124, 776), Vector2(168, 810), Vector2(221, 770)]
+}
+
+[sub_resource type="Animation" id="Animation_22clo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creatures/Chord:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-359, 802)]
+}
+
+[sub_resource type="Animation" id="Animation_65hek"]
+resource_name = "chord_leaves"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creatures/Chord:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5, 1, 1.53333, 2, 2.5, 3.03333, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(221, 770), Vector2(168, 810), Vector2(124, 776), Vector2(82, 806), Vector2(35, 766), Vector2(-9, 794), Vector2(-102, 690), Vector2(-227, 743)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3tx5"]
+_data = {
+"RESET": SubResource("Animation_22clo"),
+"chord_enters": SubResource("Animation_uvgni"),
+"chord_leaves": SubResource("Animation_65hek")
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_3wc5j")
 
 [node name="Dirt" type="Sprite2D" parent="."]
-position = Vector2(392, 668)
+position = Vector2(643, 641)
 texture = ExtResource("4_b4yjg")
 
 [node name="Dirt2" type="Sprite2D" parent="."]
@@ -30,13 +85,13 @@ scale = Vector2(1.61772, 1.4705)
 texture = ExtResource("4_b4yjg")
 
 [node name="PickupableBody" parent="." instance=ExtResource("7_bd8od")]
-position = Vector2(328, 635)
+position = Vector2(588, 604)
 
 [node name="PickupableBody2" parent="." instance=ExtResource("7_bd8od")]
-position = Vector2(387, 708)
+position = Vector2(692, 618)
 
 [node name="PickupableBody3" parent="." instance=ExtResource("7_bd8od")]
-position = Vector2(453, 644)
+position = Vector2(630, 678)
 
 [node name="Water" parent="." instance=ExtResource("7_bd8od")]
 position = Vector2(1759, 564)
@@ -49,15 +104,15 @@ type = ExtResource("8_la7rc")
 [node name="Creatures" type="CanvasLayer" parent="."]
 
 [node name="Rocky" parent="Creatures" instance=ExtResource("12_51sri")]
-position = Vector2(1515, 948)
+position = Vector2(1205, 817)
 type = ExtResource("7_k3elf")
 
 [node name="Chord" parent="Creatures" instance=ExtResource("12_51sri")]
-position = Vector2(729, 1047)
+position = Vector2(-359, 802)
 type = ExtResource("8_tuyhr")
 
 [node name="Buzz" parent="Creatures" instance=ExtResource("12_51sri")]
-position = Vector2(454, 32)
+position = Vector2(546, 280)
 type = ExtResource("9_7w6ro")
 
 [node name="Grass2" type="Sprite2D" parent="."]
@@ -133,6 +188,15 @@ position = Vector2(296, 240)
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="HUD" instance=ExtResource("7_htdkn")]
+
+[node name="Log" type="Sprite2D" parent="."]
+position = Vector2(1200, 819)
+texture = ExtResource("16_mch6q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w3tx5")
+}
 
 [connection signal="ate_food" from="Guardian/Guardian" to="HUD/HUD" method="_on_guardian_ate_food"]
 [connection signal="drank" from="Guardian/Guardian" to="HUD/HUD" method="_on_guardian_drank"]
